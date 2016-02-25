@@ -1,0 +1,10 @@
+
+if warning
+    div #{warning}
+
+else
+    ul.layer(id='layer#{layerNum}')
+        - each item, index in list
+            
+            li #{item.name}, #{item.earnings} 
+                button.button.show_next(id="#{layerNum}_#{index+1}" type='button') >>>
