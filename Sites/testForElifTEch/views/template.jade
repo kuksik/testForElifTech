@@ -1,0 +1,29 @@
+doctype !!! 5
+html
+  head
+    title test
+
+    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+
+    script(type='text/javascript', src='js.js')
+    
+    link(href='style.css', rel='stylesheet')
+
+  body
+    
+    h1 list of companies
+
+    div#menu
+        div.button add new childcompany 
+        div.button add new company
+        div.button add new parents company
+        div.button delete company
+        div.button wiev all copany
+        div.button wiev tree of one company
+        div.button edit company
+
+    div#content   
+        include ./table.jade
+      
+
+                                   

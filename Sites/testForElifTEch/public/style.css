@@ -1,0 +1,20 @@
+	#menu .button {
+		display: inline-block;
+	}
+
+	.button {
+		margin: 1px;
+		border-radius: 4px;
+		border-width: 1px;
+		background-color: grey;
+	}
+
+	.selected {
+		background-color: #D8D8D8;
+	}
+
+#content {}
+
+	.layer {}
+
+
