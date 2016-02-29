@@ -1,20 +1,65 @@
-	#menu .button {
-		display: inline-block;
+#menu .button {
+	display: inline-block;
+}
+
+.button {
+	margin: 1px;
+	border-radius: 4px;
+	border-width: 1px;
+	background-color: grey;
+}
+
+.selected {
+	background-color: #D8D8D8;
+}
+
+#content {
+
+}
+/*.header{
+	text-align: center;
+*/}
+
+	#companies_list {
+		width: auto;
 	}
 
-	.button {
-		margin: 1px;
-		border-radius: 4px;
-		border-width: 1px;
-		background-color: grey;
+	#window_add_company {
+		display: none;
+		width: 260px;
+		border: solid;
+		border-width: 5px;
+		position: absolute;
+		z-index: 2;
+		left: 35%;
+		top: 20%;
 	}
+		#window_add_company h3 {
+			text-align: center;
+		}
+		#window_add_company span {
+			width: 230px;
+			position: relative;
+			left:7px;
+		}
 
-	.selected {
-		background-color: #D8D8D8;
-	}
+			#form_add_company #buttons_container {
+				position: relative;
+				left: 150px;
+			}
+		.error {
+			border-color:red;
+		}
+		.error_message{
+			width: auto;
+			color: red;
+			font-size: 15px;
+			margin: 0px;
+			padding: 0px;
 
-#content {}
-
-	.layer {}
+		}	
+/*input :invalid {
+	border-color: red;
+}*/
 
 

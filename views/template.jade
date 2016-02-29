@@ -3,27 +3,27 @@ html
   head
     title test
 
-    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
-
-    script(type='text/javascript', src='js.js')
+    script(type='text/javascript',defer , src='js.js')
     
     link(href='style.css', rel='stylesheet')
 
   body
     
-    h1 list of companies
+    h1 TEST
 
-    div#menu
-        div.button add new childcompany 
-        div.button add new company
-        div.button add new parents company
-        div.button delete company
+    div#menu 
         div.button wiev all copany
         div.button wiev tree of one company
         div.button edit company
 
-    div#content   
-        include ./table.jade
-      
+    div#content 
+        div#companies_list
+            h3 list of companies
+            ul.list#root
+                li
+                    span#0
+                        button.button.add_company(type='button') add
+                        if list.length
+                            button.button.show_children#show_children(type='button') >>>
 
-                                   
+        include ./formForAddChild

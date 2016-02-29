@@ -1,34 +1,68 @@
-	var url = require('url');
+var url = require('url');
 
 var dbRequest = require('./dbRequest');
 
 module.exports = function(app) {
 
-	app.get('/', function(req, res) {
-		console.log('request from: "' + (url.parse(req.url, true)).pathname + '"');
+	app.get('/', function (req, res) {
 
-		var e = dbRequest.select(0, 0)
-
-		e.on('render', function(data) {
-			res.render('template', {list: data, layerNum: 0} );
+		var e = dbRequest.showChildren({parentId: 0})
+		
+		e.on('response', function(data) {
+			res.render('template', {list: data} );
 		})
 	});
 
-	app.get('/showNext', function(req, res) {
+	app.get('/showChildren', function (req, res) {
 		
-		layerNum = (url.parse(req.url, true)).query.layer ;
-		parentId = (url.parse(req.url, true)).query.parent;
-
-		console.log('request from: "' + (url.parse(req.url, true)).pathname + '"');
+		var query = JSON.parse( (url.parse(req.url, true)).query.query );
 		
-		var e = dbRequest.select(layerNum, parentId);
+		var e = dbRequest.showChildren(query);
 
-		e.on('render', function(data, warning) {
-			res.render('table', {list: data, layerNum: layerNum} );
-		})
+		e.on('response', function(data) {
+			
+			res.render('list', {
+				oneRow: false,
+				list: data,
+				parentIdOfList: query.parentId		 
+			});
 
-		e.on('warning', function() {
-			res.render('table', {warning: 'this company have not children'} );
 		})
 	})
+
+	app.get('/addNewCompany', function (req, res) {
+		
+		var query = JSON.parse( (url.parse(req.url, true)).query.query );
+
+		var e = dbRequest.addNewCompany(query);
+
+		e.on('response', function(data) {
+			
+			query.company_id = data.insertId
+
+			res.status(201)
+			res.render('list', {
+				oneRow: true,
+				list: query
+			});
+		})
+	})
+
+	app.get('/deleteCompany', function (req, res) {
+			
+			var query = JSON.parse( (url.parse(req.url, true)).query.query );
+
+			var e = dbRequest.deleteCompany(query);
+
+			res.status(200);
+			res.end();
+
+	})
 }
+
+
+
+
+
+
+

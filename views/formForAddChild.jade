@@ -1,0 +1,23 @@
+div#window_add_company 
+	h3.header Add company
+	p name, eaernings
+	span
+		form(id="form_add_company")
+			span
+				|name
+				input(name="name" placeholder="name" style="width:100px" autofocus)
+			br 
+			br
+			//- |type:   
+			//- input(name="nc_type" type="radio" value="main")
+			//- |main   
+			//- input(name="nc_type" type="radio" value="sub..." require)
+			//- |sub
+			span
+				|earnings  
+				input(name="earnings" type="number" placeholder="earnings" style="width:50px")
+			br
+			br
+			span#buttons_container
+				button.button#cancel(type="button") cancel
+				button.button#create_company(type="button") save

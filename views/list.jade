@@ -1,0 +1,20 @@
+if oneRow == true
+	//- - each item, index in list
+	li #{list.name}, #{list.earnings}
+		span(id="#{list.company_id}")
+			button.button.add_company add
+			button.button.del_company del
+    
+else	
+	ul.list(id="company_#{parentIdOfList}")
+    
+		- each item, index in list
+        
+			li #{item.name}, #{item.earnings}
+            
+				span(id="#{item.company_id}")
+					button.button.add_company add
+					button.button.del_company del
+					if item.children 
+						button.button.show_children >>>
+
