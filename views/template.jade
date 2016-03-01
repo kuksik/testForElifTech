@@ -19,11 +19,14 @@ html
     div#content 
         div#companies_list
             h3 list of companies
-            ul.list#root
-                li
-                    span#0
-                        button.button.add_company(type='button') add
+            ul.list
+                li#0(name = 'root')
+                    span
+                        button.button.show_form(name='add_company') add
                         if list.length
-                            button.button.show_children#show_children(type='button') >>>
+                            //- button.button.del_company#del_all delAll
+                            button.button.show_children >>>
 
+        
         include ./formForAddChild
+        include ./formForEdit

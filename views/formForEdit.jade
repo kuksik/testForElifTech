@@ -1,8 +1,8 @@
-div#win_add_company.popup 
-	h3.popupHeader Add company
+div#window_edit_company.popup
+	h3.popupHeader Edit company
 	p name, eaernings
 	span
-		form(id="form_add_company")
+		form(id="form_edit_company")
 			span
 				|name
 				input(name="name" placeholder="name" style="width:100px" autofocus)
@@ -20,4 +20,4 @@ div#win_add_company.popup
 			br
 			span.buttons_container
 				button.button.cancel(type="button") cancel
-				button.button.validate_form#add_company(type="button") save
+				button.button.validate_form#edit_company(type="button") edit

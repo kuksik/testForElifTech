@@ -36,7 +36,7 @@ module.exports = function(app) {
 
 		var e = dbRequest.addNewCompany(query);
 
-		e.on('response', function(data) {
+		e.on('response', function (data) {
 			
 			query.company_id = data.insertId
 
@@ -46,6 +46,24 @@ module.exports = function(app) {
 				list: query
 			});
 		})
+	})
+
+	app.get('/editCompany', function(req, res) {
+
+		var query = JSON.parse( (url.parse(req.url, true)).query.query );
+
+		var e = dbRequest.editCompany(query);
+
+		e.on('response', function (data) {
+			res.status(201)
+			res.render('list', {
+				oneRow: true,
+				list: query
+			});
+		})
+		// res.status(200);
+		// res.end('ok');
+
 	})
 
 	app.get('/deleteCompany', function (req, res) {

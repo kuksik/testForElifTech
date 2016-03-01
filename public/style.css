@@ -24,7 +24,7 @@
 		width: auto;
 	}
 
-	#window_add_company {
+	.popup {
 		display: none;
 		width: 260px;
 		border: solid;
@@ -34,16 +34,19 @@
 		left: 35%;
 		top: 20%;
 	}
-		#window_add_company h3 {
-			text-align: center;
-		}
-		#window_add_company span {
+	.popupHeader {
+		text-align: center;
+	}
+	#win_add_company {}
+
+	
+		#win_add_company span {
 			width: 230px;
 			position: relative;
 			left:7px;
 		}
 
-			#form_add_company #buttons_container {
+			.buttons_container {
 				position: relative;
 				left: 150px;
 			}
