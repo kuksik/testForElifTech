@@ -1,4 +1,10 @@
-var host = location.href
+function main() {
+  return 'Hello, World!';
+}
+
+main();
+
+var host = location.href;
 
 
 var list = document.getElementById('companies_list');	
@@ -6,7 +12,7 @@ list.addEventListener('click', function (event) {
 	event.stopPropagation();
 
 	var elem = event.target,
-		liContainer = elem.closest('li');
+		liContainer = elem.closest('li'),
 		elemId = liContainer.id,
 		elemClassList = elem.classList;
 	
@@ -16,15 +22,15 @@ list.addEventListener('click', function (event) {
 
 			elemClassList.add('selected');
 
-			var res = reqToServer(host, 'showChildren', {parentId: elemId})
+			var res = reqToServer(host, 'showChildren', {parentId: elemId});
 
 			res.addEventListener('load', function () {
-				liContainer.insertAdjacentHTML('beforeend', res.responseText)
+				liContainer.insertAdjacentHTML('beforeend', res.responseText);
 			});	
 		} 
 		else {
 			liContainer.querySelector('ul').remove();
-			elemClassList.remove('selected')
+			elemClassList.remove('selected');
 			
 		}
 	}
@@ -38,7 +44,7 @@ list.addEventListener('click', function (event) {
 			button.click();
 		}											
 
-		var res = reqToServer(host, 'deleteCompany', {companyId: elemId})
+		var res = reqToServer(host, 'deleteCompany', {companyId: elemId});
 
 		res.addEventListener('load', function() {
 			if ( res.status == 200 ) {
@@ -54,7 +60,7 @@ list.addEventListener('click', function (event) {
 					liContainer.remove();
 				}		
 			}
-		}) 
+		}); 
 	}
 
 	if ( elemClassList.contains('show_form') ) {
@@ -62,7 +68,7 @@ list.addEventListener('click', function (event) {
 		var button = document.getElementById(elem.name);
 		
 		button.closest('div').style.display = 'block';
-		button.name = elemId
+		button.name = elemId;
 
 		if ( elem.name == 'edit_company' ) {
 			var form = button.closest('form');
@@ -70,11 +76,11 @@ list.addEventListener('click', function (event) {
 			form.earnings.value = liContainer.querySelector('.earnings').textContent;
 		}
 	}
-})
+});
 
 
 var buttonsValidate = document.getElementsByClassName('validate_form');
-for (i=0; i<buttonsValidate.length; i++) {
+for (var i=0; i<buttonsValidate.length; i++) {
 
 	buttonsValidate[i].addEventListener('click', function(event) {		
 		event.stopPropagation();
@@ -102,7 +108,7 @@ for (i=0; i<buttonsValidate.length; i++) {
 					if ( buttonShow && buttonShow.classList.contains('selected') ) {
 
 						liContainer.querySelector('ul').
-							insertAdjacentHTML('beforeend', res.responseText)
+							insertAdjacentHTML('beforeend', res.responseText);
 					} 
 					if ( !buttonShow ) {
 						var newButton = document.createElement('button');
@@ -110,7 +116,7 @@ for (i=0; i<buttonsValidate.length; i++) {
 						newButton.innerHTML = '>>>';
 						liContainer.appendChild(newButton);
 					}
-				})
+				});
 			}
 
 			if (this.id == 'edit_company') {
@@ -122,42 +128,43 @@ for (i=0; i<buttonsValidate.length; i++) {
 					var newLiContainer = parser.
 						parseFromString(res.responseText, "text/html").querySelector('li');
 					
-					ulContainer.replaceChild(newLiContainer, liContainer)
-				})			
+					ulContainer.replaceChild(newLiContainer, liContainer);
+				});			
 			}
 
 			this.closest('div').style.display = "none";
-			resetForm(form)
+			resetForm(form);
 		}	
-	})
-};
+	});
+}
 
 
 var buttonsCancel = document.getElementsByClassName('cancel');
-for (i=0; i<buttonsCancel.length; i++) {
-
-	buttonsCancel[i].addEventListener('click', function(event) {	
+for (var i=0; i<buttonsCancel.length; i++) {
+	buttonsCancel[i].addEventListener('click', function(event) {
 		event.stopPropagation();	
 		var elem = event.target;
 
 		elem.closest('div').style.display = "none";
-		resetForm(elem.closest('form'));
-	})
-};
+		resetForm(elem.closest('form'));	
+	});
+}
+
+
 
 
 function validate(form) {
 
 	var valid = true;
 
-	resetError(form.name.nextSibling)
+	resetError(form.name.nextSibling);
 	if ( !form.name.value ) {
 		form.name.className = 'error';
 		showError(form.name.closest('span'), 'type the earnings');
-		valid = false	
-	};
+		valid = false	;
+	}
 
-	resetError(form.earnings.nextSibling)
+	resetError(form.earnings.nextSibling);
 	if ( !form.earnings.value ) {
 		form.earnings.className = 'error';
 		showError(form.earnings.closest('span'), 'type the earnings');
@@ -176,15 +183,15 @@ function showError(container, errorMessage) {
 
 function resetError(msgElem) {
 	if ( msgElem ) {
-		msgElem.previousSibling.className = ''
+		msgElem.previousSibling.className = '';
 		msgElem.remove();
 	}
 }
 
 function resetForm(form) {
 	form.reset();
-	resetError(form.name.nextSibling)
-	resetError(form.earnings.nextSibling)		
+	resetError(form.name.nextSibling);
+	resetError(form.earnings.nextSibling);		
 }
 
 function reqToServer (host, urlPath, queryObject) {	
@@ -193,7 +200,7 @@ function reqToServer (host, urlPath, queryObject) {
 							JSON.stringify(queryObject) );
 	request.send();
 	return request;
-};
+}
 
 // window.addEventListener('keydown', function(event) {
 	
@@ -206,4 +213,4 @@ function reqToServer (host, urlPath, queryObject) {
 // 			document.getElementById('create_company').click();
 // 		}
 // 	}
-// })
+// })	

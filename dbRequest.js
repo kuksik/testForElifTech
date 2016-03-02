@@ -15,45 +15,45 @@ function showChildren(query) {
 		function (err, result) {
 			if (err) {
 				console.log(err);
-				return
-			};
+				return;
+			}
 
 			console.log('selected data with parentId = ' + query.parentId);
 			e.emit('response', result);
 	});
 	return e;
-};
+}
 					
 function addNewCompany(query) {
 	var e = new emitter();
 
-	dbConnect.query('INSERT INTO tb_tree (name, earnings, parent_id) VALUES ("' 
-					+ query.name + '", ' +  query.earnings + ', ' 
-					+ query.company_id + ')', 	
+	dbConnect.query('INSERT INTO tb_tree (name, earnings, parent_id) VALUES ("' + 
+					query.name + '", ' +  query.earnings + ', ' +
+					query.company_id + ')', 	
 		function (err, result){
 			if (err) {
 				console.log(err);
-				return
-			};
+				return;
+			}
 			console.log('new company added with id = ' + result.insertId);
-			e.emit('response', result)
+			e.emit('response', result);
 	});
 	return e;
 }
 
 function editCompany(query) {
 	var e = new emitter();
-	console.log(query)
+	console.log(query);
 
 	dbConnect.query('update tb_tree set name = "' + query.name + '", earnings = "' + query.earnings + '" where company_id = "' + query.company_id +'"',
 		function (err, result) {
 			if (err) {
 				console.log(err);
-				return
-			};
+				return;
+			}
 			console.log('edited company with id = ' + query.company_id);
-			console.log(result)
-			e.emit('response', result)
+			console.log(result);
+			e.emit('response', result);
 		});		
 	return e;
 
@@ -68,19 +68,18 @@ function deleteCompany(query) {
 		function (err, result) {
 			if (err) {
 				console.log(err);
-				return
-			};
+				return;
+			}
 			console.log('delete company with id = ' + query.companyId +
 													' and all childrean');
-			e.emit('response')
+			e.emit('response');
 	});
 	return e;
 }
 
 
 
-exports.editCompany = editCompany
+exports.editCompany = editCompany;
 exports.showChildren = showChildren;
 exports.addNewCompany = addNewCompany;
 exports.deleteCompany = deleteCompany;
-

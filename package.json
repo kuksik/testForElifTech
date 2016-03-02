@@ -4,15 +4,13 @@
   "description": "testForElifTech",
   "main": "./index.js",
   "dependencies": {},
-
   "devDependencies": {
-    "jade": "*",
     "express": "*",
+    "jade": "*",
+    "jshint": "^2.9.1",
     "mysql": "*",
     "mysql-utilities": "*"
-
   },
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

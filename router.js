@@ -6,11 +6,11 @@ module.exports = function(app) {
 
 	app.get('/', function (req, res) {
 
-		var e = dbRequest.showChildren({parentId: 0})
+		var e = dbRequest.showChildren({parentId: 0});
 		
 		e.on('response', function(data) {
 			res.render('template', {list: data} );
-		})
+		});
 	});
 
 	app.get('/showChildren', function (req, res) {
@@ -27,8 +27,8 @@ module.exports = function(app) {
 				parentIdOfList: query.parentId		 
 			});
 
-		})
-	})
+		});
+	});
 
 	app.get('/addNewCompany', function (req, res) {
 		
@@ -38,15 +38,15 @@ module.exports = function(app) {
 
 		e.on('response', function (data) {
 			
-			query.company_id = data.insertId
+			query.company_id = data.insertId;
 
-			res.status(201)
+			res.status(201);
 			res.render('list', {
 				oneRow: true,
 				list: query
 			});
-		})
-	})
+		});
+	});
 
 	app.get('/editCompany', function(req, res) {
 
@@ -55,16 +55,16 @@ module.exports = function(app) {
 		var e = dbRequest.editCompany(query);
 
 		e.on('response', function (data) {
-			res.status(201)
+			res.status(201);
 			res.render('list', {
 				oneRow: true,
 				list: query
 			});
-		})
+		});
 		// res.status(200);
 		// res.end('ok');
 
-	})
+	});
 
 	app.get('/deleteCompany', function (req, res) {
 			
@@ -75,12 +75,5 @@ module.exports = function(app) {
 			res.status(200);
 			res.end();
 
-	})
-}
-
-
-
-
-
-
-
+	});
+};

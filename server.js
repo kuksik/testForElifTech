@@ -14,13 +14,13 @@ app.set('views', './views');
 app.use(express.static('./public')); 
 
 app.use(function (req, res, next) {
-	console.log('request from: ' +  (url.parse(req.url, true)).pathname)
-	next()
+	console.log('request from: ' +  (url.parse(req.url, true)).pathname);
+	next();
 });
 
 
 module.exports =  function() {
     router(app);      
     var server = app.listen(9999);
-    console.log('server started')
+    console.log('server started');
 };
