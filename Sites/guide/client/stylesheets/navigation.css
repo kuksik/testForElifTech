@@ -1,0 +1,46 @@
+.navigation-target {
+	background-color: green;
+	width: 100%;
+	height: 59px;
+	position: relative;
+}
+
+	.navigate-item {
+		padding: 15px;
+		font-size: 25px;
+		font-weight: bold;
+		width: 100px;
+		display: inline-block;
+		text-align: center;
+		cursor: pointer;		
+	}
+	.navigate-item:hover {
+		color: white;
+	}
+
+	.menu-target > div {
+		display: inline-table;
+	}
+
+	.area-list {
+		margin: 0;
+		z-index: 50;
+		background-color: white;
+	}
+		.popup-menu-item {
+			text-align: center;
+			cursor: pointer;
+			margin-bottom: 1px;
+			padding:10px;
+			background-color: #f5f5ef;	
+		}
+
+		
+		/*
+		.popup-menu-item > a:hover {
+			color: white;
+		}
+*/
+		
+
+
